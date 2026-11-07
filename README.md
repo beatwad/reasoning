@@ -1,6 +1,7 @@
 # GRPO on GSM8K: reproduction with a fixed reward
 
-Checks whether GRPO improves Qwen2.5-0.5B-Instruct on GSM8K beyond the format-learning effect.
+This project verifies the claims of the article ["Reasoning Models at Home"](https://ertugruldemir.medium.com/reasoning-models-at-home-760310732f6b) by Ertuğrul Demir.
+It checks whether GRPO improves Qwen2.5-0.5B-Instruct on GSM8K beyond the format-learning effect.
 Task spec: [grpo-gsm8k-task.md](grpo-gsm8k-task.md).
 
 ## Files
