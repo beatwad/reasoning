@@ -1,0 +1,17 @@
+A: soft=0.4496 careful=0.4519 boxed=0.476 answer_tag=0.240
+B: soft=0.4556 careful=0.4610 boxed=0.423 answer_tag=0.000
+C: soft=0.4822 careful=0.4822 boxed=0.005 answer_tag=0.989
+soft    A->B: +0.61 pp, 95% CI [-2.08, +3.30], p=0.699, only_base=160, only_other=168
+careful A->B: +0.91 pp, 95% CI [-1.80, +3.62], p=0.546, only_base=160, only_other=172
+soft    A->C: +3.26 pp, 95% CI [+0.43, +6.09], p=0.0274, only_base=160, only_other=203
+careful A->C: +3.03 pp, 95% CI [+0.21, +5.86], p=0.0402, only_base=161, only_other=201
+soft    B->C: +2.65 pp, 95% CI [-0.09, +5.40], p=0.0662, only_base=154, only_other=189
+careful B->C: +2.12 pp, 95% CI [-0.61, +4.86], p=0.143, only_base=156, only_other=184
+C sections found: 1304; answer == last number of reasoning: 92.9%; differs: 92
+  soft accuracy when same: 0.507; when differs: 0.228
+  reasoning last number wrong, answer right: 21
+  reasoning last number right, answer wrong: 7
+  median words: reasoning=92.0 validate=39.0; validate under 5 words: 0.0%
+  validate starts with 'wait': 0.0%
+  top validate openings: [('the calculation is correct. if', 201), ('the calculation is correct. the', 181), ('this calculation is correct because', 82), ('the calculation is correct. we', 74), ('the calculation is correct as', 47), ('the solution is correct because', 30)]
+  validate opens with approval ('the ... is correct'): all=83.9% wrong answers=83.4%

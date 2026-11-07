@@ -1,0 +1,27 @@
+{
+  "n": 1319,
+  "strict_acc": 0.5003790750568613,
+  "soft_acc": 0.5072024260803639,
+  "format_rate": 0.9711902956785443,
+  "truncated_rate": 0.01819560272934041,
+  "mean_len_tokens": 311.21683093252466,
+  "median_len_tokens": 288,
+  "wait_rate": 0.0037907505686125853,
+  "n_with_wait": 5,
+  "soft_acc_with_wait": 0.6,
+  "soft_acc_without_wait": 0.5068493150684932,
+  "config": {
+    "variant": "C",
+    "model": "unsloth/Qwen2.5-0.5B-Instruct",
+    "lora": "outputs/grpo_2k_min_validate/lora_final",
+    "max_lora_rank": 32,
+    "max_tokens": 1024,
+    "max_model_len": 2048,
+    "gpu_memory_utilization": 0.8,
+    "seed": 3407,
+    "limit": 0,
+    "output_dir": "outputs/eval_min_validate",
+    "tag": null,
+    "prompt_style": "paper"
+  }
+}

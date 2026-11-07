@@ -76,6 +76,10 @@ def main():
           f"validate under 5 words: {st.mean(len(m[2].split()) < 5 for _, m in rows):.1%}")
     print(f"  validate starts with 'wait': {st.mean(m[2].strip().lower().startswith('wait') for _, m in rows):.1%}")
     print("  top validate openings:", Counter(" ".join(m[2].split()[:5]).lower() for _, m in rows).most_common(6))
+    approves = re.compile(r"^\W*the\s+(\w+\s+){0,3}(is|are)\s+correct", re.I)
+    wrong = [m for r, m in rows if not r["soft_correct"]]
+    print(f"  validate opens with approval ('the ... is correct'): all={st.mean(bool(approves.search(m[2].strip())) for _, m in rows):.1%} "
+          f"wrong answers={st.mean(bool(approves.search(m[2].strip())) for m in wrong):.1%}")
 
 
 if __name__ == "__main__":

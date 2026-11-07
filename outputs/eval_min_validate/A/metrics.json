@@ -1,0 +1,27 @@
+{
+  "n": 1319,
+  "strict_acc": 0.05686125852918878,
+  "soft_acc": 0.4495830174374526,
+  "format_rate": 0.1865049279757392,
+  "truncated_rate": 0.015163002274450341,
+  "mean_len_tokens": 269.52615617892343,
+  "median_len_tokens": 258,
+  "wait_rate": 0.000758150113722517,
+  "n_with_wait": 1,
+  "soft_acc_with_wait": 0.0,
+  "soft_acc_without_wait": 0.44992412746585736,
+  "config": {
+    "variant": "A",
+    "model": "unsloth/Qwen2.5-0.5B-Instruct",
+    "lora": null,
+    "max_lora_rank": 32,
+    "max_tokens": 1024,
+    "max_model_len": 2048,
+    "gpu_memory_utilization": 0.8,
+    "seed": 3407,
+    "limit": 0,
+    "output_dir": "outputs/eval_min_validate",
+    "tag": null,
+    "prompt_style": "cot"
+  }
+}

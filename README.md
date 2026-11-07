@@ -35,6 +35,8 @@ python train.py --output_dir outputs/smoke --num_train_examples 2000 --max_steps
 python train.py --output_dir outputs/grpo_2k --num_train_examples 2000
 #    resume after an interruption:
 python train.py --output_dir outputs/grpo_2k --num_train_examples 2000 --resume
+#    extra seeds (the seed also changes which 2000 problems are used):
+python train.py --output_dir outputs/grpo_2k_s1 --num_train_examples 2000 --seed 1
 
 # 5. Full epoch (only if step 4 improves accuracy without exploits)
 python train.py --output_dir outputs/grpo_full --num_train_examples 0
@@ -45,11 +47,18 @@ python evaluate.py --variant B
 python evaluate.py --variant C --lora outputs/grpo_2k/lora_final
 #    evaluate an intermediate checkpoint:
 python evaluate.py --variant C --lora outputs/grpo_2k/checkpoint-100 --tag C_ckpt100
+#    evaluate an extra seed (keep the evaluation seed at 3407):
+python evaluate.py --variant C --lora outputs/grpo_2k_s1/lora_final --tag C_s1
 
 # 7. Table + examples for REPORT.md
 python compare.py --examples_variant C --n_examples 10
 python scripts/audit_eval.py | tee outputs/eval/audit.txt
+#    audit_eval.py reads <dir>/{A,B,C}; for an extra seed, point C at it with symlinks:
+mkdir -p /tmp/audit_s1 && ln -sfn $PWD/outputs/eval/{A,B} /tmp/audit_s1/ && ln -sfn $PWD/outputs/eval/C_s1 /tmp/audit_s1/C
+python scripts/audit_eval.py /tmp/audit_s1
 ```
+
+Results: [REPORT.md](REPORT.md). Across 3 training seeds, the trained model gains +3.3 to +5.8 pp (mean +4.7 pp) soft accuracy over the base model, and `<validate>` became an automatic approval rather than a check.
 
 Each `train.py` output directory holds: `checkpoint-*` (LoRA + optimizer state, every 100 steps),
 `lora_final/`, `grpo_config.json` (resolved config), `timing.json`, `samples.jsonl` (sampled completions with rewards).
@@ -58,7 +67,7 @@ Each `train.py` output directory holds: `checkpoint-*` (LoRA + optimizer state, 
 
 - Reward replaced: no length bonus, no `wait/but/rethink` multiplier. Tags must appear once each, in order, with nothing outside them.
 - Partial format credit, 0.025 per tag pair (max 0.075, below the 0.1 for wrong-but-formatted). The base model produced 0% fully formatted answers in the probes (greedy and T=1.0), so a strict-only reward gave GRPO zero signal.
-- `<validate>` must have at least 10 words (`MIN_VALIDATE_WORDS`) to count, both for the full format and for partial credit. In one run, the model reduced it to the single word `wait`. This is a threshold, with no bonus for extra words. Runs 1 and 2 in `REPORT.md` predate this rule.
+- `<validate>` must have at least 10 words (`MIN_VALIDATE_WORDS`) to count, both for the full format and for partial credit. In one run, the model reduced it to the single word `wait`. This is a threshold, with no bonus for extra words. Runs 1 and 2 in `REPORT.md` predate this rule; run 3 uses it.
 - `num_generations=8`, `max_completion_length=1024` (article: 2 and 512).
 - `max_seq_length = max_prompt_length + max_completion_length = 1280` (article: 1024, which can't hold a 256-token prompt plus a 1024-token completion).
 - Batch is `8 × 4` instead of `1 × 32`. That's still 32 completions per optimizer step, but the generation batch now divides by `num_generations`, as TRL requires. Use `--per_device_train_batch_size 1 --gradient_accumulation_steps 32` if your TRL version accepts it.
