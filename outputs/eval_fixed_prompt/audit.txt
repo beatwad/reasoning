@@ -1,0 +1,16 @@
+A: soft=0.4526 careful=0.4549 boxed=0.484 answer_tag=0.237
+B: soft=0.4367 careful=0.4435 boxed=0.422 answer_tag=0.000
+C: soft=0.5087 careful=0.5087 boxed=0.026 answer_tag=0.986
+soft    A->B: -1.59 pp, 95% CI [-4.27, +1.09], p=0.267, only_base=173, only_other=152
+careful A->B: -1.14 pp, 95% CI [-3.82, +1.54], p=0.437, only_base=170, only_other=155
+soft    A->C: +5.61 pp, 95% CI [+2.76, +8.46], p=0.000147, only_base=149, only_other=223
+careful A->C: +5.38 pp, 95% CI [+2.54, +8.23], p=0.000268, only_base=150, only_other=221
+soft    B->C: +7.20 pp, 95% CI [+4.45, +9.95], p=4.15e-07, only_base=127, only_other=222
+careful B->C: +6.52 pp, 95% CI [+3.79, +9.25], p=4.11e-06, only_base=129, only_other=215
+C sections found: 1300; answer == last number of reasoning: 95.8%; differs: 55
+  soft accuracy when same: 0.520; when differs: 0.400
+  reasoning last number wrong, answer right: 22
+  reasoning last number right, answer wrong: 1
+  median words: reasoning=102.0 validate=1.0; validate under 5 words: 100.0%
+  validate starts with 'wait': 100.0%
+  top validate openings: [('wait', 1300)]

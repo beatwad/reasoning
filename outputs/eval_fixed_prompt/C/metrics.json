@@ -1,0 +1,27 @@
+{
+  "n": 1319,
+  "strict_acc": 0.5072024260803639,
+  "soft_acc": 0.5087187263078089,
+  "format_rate": 0.9855951478392722,
+  "truncated_rate": 0.013646702047005308,
+  "mean_len_tokens": 214.52539802880972,
+  "median_len_tokens": 188,
+  "wait_rate": 0.9855951478392722,
+  "n_with_wait": 1300,
+  "soft_acc_with_wait": 0.5146153846153846,
+  "soft_acc_without_wait": 0.10526315789473684,
+  "config": {
+    "variant": "C",
+    "model": "unsloth/Qwen2.5-0.5B-Instruct",
+    "lora": "outputs/grpo_2k_fixed_prompt/lora_final",
+    "max_lora_rank": 32,
+    "max_tokens": 1024,
+    "max_model_len": 2048,
+    "gpu_memory_utilization": 0.8,
+    "seed": 3407,
+    "limit": 0,
+    "output_dir": "outputs/eval_fixed_prompt",
+    "tag": null,
+    "prompt_style": "paper"
+  }
+}

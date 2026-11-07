@@ -1,0 +1,16 @@
+# Python
+.venv/
+__pycache__/
+.pytest_cache/
+
+# Unsloth generated code
+unsloth_compiled_cache/
+
+# Logs
+logs/
+*.log
+
+# Heavy training artifacts; metrics, configs and predictions in outputs/ stay tracked
+outputs/**/checkpoint-*/
+outputs/**/lora_final/
+outputs/**/completions/

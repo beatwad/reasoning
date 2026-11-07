@@ -1,0 +1,8 @@
+{
+  "measured_steps": 70,
+  "skipped_warmup_steps": 5,
+  "mean_step_s": 1.8396461179860386,
+  "median_step_s": 1.6739055199977884,
+  "max_steps": 75,
+  "total_measured_s": 128.7752282590227
+}

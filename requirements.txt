@@ -1,0 +1,9 @@
+# Unpinned on purpose: install, then run scripts/record_env.sh to freeze exact versions into versions.txt.
+# Unsloth pins compatible torch/transformers/trl/vllm itself; install it first.
+unsloth
+vllm
+trl
+peft
+datasets
+transformers
+pytest
